@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(action="/",method="POST")
+    label Register Email for NewsLetter:
+    input(name="email" type="email" placeholder="Enter Email EX: abc@abc.com" class="form-control my-1")
+    button(type="submit" class="btn btn-success") Subscribe
+  if emails
+    h1 Inserted Emails (#{emails.length})
+    for email in emails
+        p #{email.id} | #{email.email} | Edit - Delete
