@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  <form id="deleteForm" method="post"></form>
 
   form(action="/",method="POST")
     label Register Email for NewsLetter:
@@ -11,4 +12,4 @@ block content
   if emails
     h1 Inserted Emails (#{emails.length})
     for email in emails
-        p #{email.id} | #{email.email} | Edit - Delete
+        p #{email.id} | #{email.email} | <a href="/#{email.id}/edit">Edit</a> - <a href="#" onclick="deleteBtn(#{email.id})">Delete</a>

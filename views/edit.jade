@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(action="/#{email.id}?_method=PUT",method="POST")
+    label Edit Email:
+    input(name="email" type="email" placeholder="Enter Email EX: abc@abc.com" class="form-control my-1" value="#{email.email}")
+    button(type="submit" class="btn btn-success") Save
+    a(href="/" class="btn btn-warning") Return
+  if emails
+    h1 Inserted Emails (#{emails.length})
+    for email in emails
+        p #{email.id} | #{email.email} | <a href="/#{email.id}/edit">Edit</a> - <a href="#" onclick="delete(#{email.id})">Delete</a>
